@@ -247,3 +247,13 @@ Under `autonomy: afk`, "Unattended work" above decides these instead.
 - Use `any` type without explicit `@ts-expect-error` or `@ts-ignore` with justification
 - Break the workspace structure (don't move packages outside `apps/*` or `packages/*`)
 - Commit without running type checks and linting
+
+## Docs artifact naming
+
+- Name each artifact under `docs/<type>/` as `NNNN-<type>-<slug>-YYYY-MM-DD.md`.
+- Use a four-digit serial for `NNNN` in each directory. Assign serials in creation order. Never reuse a serial.
+- Find the highest serial in the current worktree, every worktree from `git worktree list`, and `origin/HEAD`. Add one to that serial. Scan each source to prevent duplicate serials across worktrees.
+- Run `git fetch origin` before you read the remote tree. Use `git ls-tree -r --name-only origin/HEAD -- <dir>` to list its artifacts. Skip a source that fails. Without Git, list the local directory only. Start an empty directory at `0001`.
+- Use the creation date for `YYYY-MM-DD`. Keep the full filename after edits.
+- Use the decision number as the serial for an ADR. Use `docs/adr/NNNN-adr-<slug>-YYYY-MM-DD.md`.
+- Keep reader pages under `docs/wiki/` unnumbered. Keep guides and runbooks unnumbered.
