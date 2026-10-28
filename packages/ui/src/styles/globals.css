@@ -1,0 +1,112 @@
+/* The shared layer of the theme. `@repo/ui` owns Tailwind's entrypoint, the source globs
+   and the base layer here, and NO token values. The tokens, colour mapping and `dark`
+   variant live in a theme file beside this one, which imports this file first:
+
+     - brand.css  the product's tokens (web.css imports it, and Layout.astro imports web.css)
+     - admin.css  the admin app's tokens, written by the admin module
+
+   An app imports its own stylesheet, never this one directly. The token set in brand.css
+   is shadcn's `neutral` base color with `cssVariables: true`, and components.json points
+   at brand.css, so a preset or `pnpm --filter @repo/ui exec shadcn add <x>` lands there. */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Tailwind's automatic class detection is rooted at the CURRENT WORKING DIRECTORY, and
+   `astro dev`/`astro build` run with cwd = apps/web. Without these globs every utility
+   class written inside packages/ui is silently dropped — no error, no warning, just
+   missing CSS. A non-matching @source glob is equally silent, so both paths matter. */
+@source "../*.{ts,tsx}";
+@source "../blocks/**/*.{ts,tsx}";
+@source "../containers/**/*.{ts,tsx}";
+@source "../content/**/*.{ts,tsx}";
+@source "../lib/**/*.{ts,tsx}";
+
+/* Components are listed one by one, and that is deliberate. Tailwind scans CONTENT, not
+   imports: a primitive nobody renders still pushes every class string it contains into
+   every stylesheet that pulls this file in. A blanket `../components/**` glob therefore
+   charges the landing page for primitives only an admin screen uses — measured at 71.5 kB
+   against 45.7 kB for the same page with the unused ones out of the scan.
+
+   So this list is the set the landing page and src/blocks/ actually render. Vendor a
+   primitive with `shadcn add` and one of two things is true:
+
+     - a block or an app page renders it → add its line here;
+     - only one app renders it → add an `@source` line in THAT app's own stylesheet
+       instead, the way admin.css does for the shell primitives.
+
+   Get this wrong and the failure is the silent one the comment above describes: the class
+   never reaches the CSS and the component renders unstyled. */
+@source "../components/accordion.tsx";
+@source "../components/badge.tsx";
+@source "../components/button.tsx";
+@source "../components/card.tsx";
+@source "../components/input.tsx";
+@source "../components/label.tsx";
+@source "../components/separator.tsx";
+
+/* FOUR levels up, not three. From packages/ui/src/styles/ the path walks
+   styles → src → ui → packages → <root>, so `../../../apps/**` would resolve to
+   packages/apps/** — a directory that does not exist. shadcn's own astro-monorepo
+   template ships that off-by-one and gets away with it only because cwd-rooted
+   auto-detection happens to cover the app; that cover vanishes when Turborepo builds
+   from the repo root. Do not "correct" this back to three. */
+@source "../../../../apps/**/*.{ts,tsx,astro}";
+
+/* Tailwind's own scanner skips node_modules only by way of .gitignore, and its ignore
+   walker needs a real .git directory to honour one. Before `git init` — a fresh
+   `saasaloy init`, or CI checking out a tarball — every .ts/.md under node_modules gets
+   scanned and the built stylesheet balloons ~5x (173 kB vs 33 kB, measured) with
+   utilities no page uses. This exclusion makes the result independent of git state. */
+@source not "../../../../**/node_modules";
+
+/* Each app keeps its DESIGN.md in its own folder, and Tailwind's cwd-rooted detection
+   reads Markdown too. A design document names utilities in prose (`text-6xl`, `shadow`),
+   and without this line each one lands in that app's stylesheet. */
+@source not "../../../../apps/*/DESIGN.md";
+
+/* The theme toggle's circular reveal. A press runs inside a view transition (revealTheme()
+   in lib/theme.ts, and the same code in THEME_INIT_SCRIPT), and these rules animate it: the
+   new theme grows as a circle from the button over a still snapshot of the old one. The
+   script sets the circle's centre and final radius as custom properties on <html>, and
+   the `data-theme-reveal` attribute scopes the rules to a toggle press, so any other view
+   transition keeps the browser's default cross-fade. It lives here, not in a theme file,
+   because every app shares the toggle. With reduced motion requested, the script skips
+   the transition, and the rule below stops any that still starts. */
+[data-theme-reveal]::view-transition-old(root),
+[data-theme-reveal]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+[data-theme-reveal]::view-transition-new(root) {
+  animation: theme-reveal 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-reveal-x) var(--theme-reveal-y));
+  }
+
+  to {
+    clip-path: circle(
+      var(--theme-reveal-r) at var(--theme-reveal-x) var(--theme-reveal-y)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme-reveal]::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

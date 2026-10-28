@@ -1,0 +1,10 @@
+{
+  "$schema": "https://saasaloy.dev/schemas/saasaloy-lock.schema.json",
+  "lockfileVersion": 1,
+  "modules": {},
+  "base": {
+    "name": "web",
+    "cliVersion": "0.8.0",
+    "templateHash": "d1b105700e1ecba8f03e41fce22124294aed2ec8a28c3882b54d8055dd8fb773"
+  }
+}

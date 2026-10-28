@@ -1,0 +1,54 @@
+import ultracite from "ultracite/stylelint";
+
+// Ultracite's Stylelint config with the at-rule allow-list widened for Tailwind v4.
+// Its list stops at tailwind/apply/layer/variants/responsive/screen/source/reference,
+// and the theme files in `packages/ui/src/styles/` also use `@theme` and
+// `@custom-variant`, so without these entries the config fails on every one of them.
+//
+// The notation rules match shadcn's own output: its colour tokens are written
+// `oklch(0.985 0 0)`, and rewriting them to `oklch(98.5% 0deg)` would have to be
+// redone by hand after every `shadcn add` sync.
+export default {
+  ...ultracite,
+
+  // Stylelint has no .gitignore support and its default ignore list is
+  // `node_modules` only, so build output has to be named here. `pnpm lint:css`
+  // globs `**/*.css`, which after a `pnpm build` would otherwise walk into
+  // `apps/*/dist/_astro/*.css` — Tailwind's minified output, ~600 findings of
+  // "violations" in code nobody wrote.
+  ignoreFiles: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.astro/**",
+    "**/.turbo/**",
+    "**/.wrangler/**",
+  ],
+  rules: {
+    ...ultracite.rules,
+    "import-notation": "string",
+    "hue-degree-notation": "number",
+    "lightness-notation": "number",
+
+    // Stylelint 17.15.0 added `at-rule-prelude-no-invalid`, which checks an at-rule's
+    // prelude against the CSS grammar. Tailwind's `@apply` takes a list of utility
+    // class names, which no grammar describes, so every use in a theme file is
+    // reported. Ignore that one at-rule rather than turning the rule off — it still
+    // validates `@media`, `@supports` and the rest.
+    "at-rule-prelude-no-invalid": [true, { ignoreAtRules: ["apply"] }],
+
+    "at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          ...ultracite.rules["at-rule-no-unknown"][1].ignoreAtRules,
+          "custom-variant",
+          "plugin",
+          "theme",
+          "utility",
+          "variant",
+        ],
+      },
+    ],
+  },
+};

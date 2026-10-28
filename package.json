@@ -1,0 +1,52 @@
+{
+  "name": "gadgetrow",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=24.13.0",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "prepare": "husky && node packages/tooling/src/link-skills.ts",
+    "build": "turbo run build",
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
+    "clean": "turbo run clean && rimraf -g node_modules .turbo \"{apps,packages}/*/node_modules\" \"{apps,packages}/*/.turbo\"",
+    "deploy:production": "node packages/tooling/src/deploy-production.ts",
+    "release": "node packages/tooling/src/release.ts",
+    "release:dry": "node packages/tooling/src/release.ts --dry-run",
+    "dev": "turbo run dev",
+    "env:setup": "node packages/env/scripts/env-setup.ts",
+    "test": "turbo run test && vitest run",
+    "lint": "pnpm run lint:types && pnpm run lint:code && pnpm run lint:css && pnpm run format:check",
+    "lint:types": "oxlint -c oxlint.config.mjs --type-aware --deny-warnings packages/config/src packages/env/src packages/tooling/src packages/ui/src",
+    "lint:code": "oxlint -c oxlint.config.mjs --deny-warnings .",
+    "lint:css": "stylelint \"**/*.css\" --max-warnings 0",
+    "lint:fix": "oxlint -c oxlint.config.mjs --type-aware --fix packages/config/src packages/env/src packages/tooling/src packages/ui/src && oxlint -c oxlint.config.mjs --fix . && stylelint \"**/*.css\" --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "skills:link": "node packages/tooling/src/link-skills.ts",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "husky": "9.1.7",
+    "lint-staged": "17.6.0",
+    "oxlint": "1.86.0",
+    "oxlint-tsgolint": "7.0.2003",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "rimraf": "6.1.3",
+    "stylelint": "17.15.0",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-prettier": "5.0.3",
+    "turbo": "2.11.6",
+    "typescript": "7.0.2",
+    "ultracite": "7.12.2",
+    "vitest": "5.0.5"
+  }
+}

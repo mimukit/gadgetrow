@@ -1,0 +1,677 @@
+{
+  "links": {},
+  "managed": {
+    "AGENTS.md": {
+      "hash": "6c3f218d3c5abe0e8663ffef59d8d812907d1eac352e43e2e1c5a13d2649cba7",
+      "module": "base",
+      "from": "AGENTS.md"
+    },
+    "CLAUDE.md": {
+      "hash": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "module": "base",
+      "from": "CLAUDE.md"
+    },
+    "README.md": {
+      "hash": "2e81d0fea019dddf5219d006907aa54bba4ff43ee66749ba16bb25d40cb5e58b",
+      "module": "base",
+      "from": "README.md"
+    },
+    ".agents/skills/saasaloy-config/SKILL.md": {
+      "hash": "36f56176e94bbf36c25c42d1a17c14efb3b33f48e47aa28a50e70fbdda338bfc",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-config/SKILL.md"
+    },
+    ".agents/skills/saasaloy-deploy/SKILL.md": {
+      "hash": "8ef58649fc9d8a29bcac472096d15af0937522aab2817b0aec66408c5484a787",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-deploy/SKILL.md"
+    },
+    ".agents/skills/saasaloy-design/SKILL.md": {
+      "hash": "b02ddf9d669e3287fc329f8b5561384209eea3a81bd0761e6dd6d30177f64880",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-design/SKILL.md"
+    },
+    ".agents/skills/saasaloy-env/SKILL.md": {
+      "hash": "8b0fd6b92e4048caa68a96e3cf907ff644499a58ba1b056fe400097026a5a699",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-env/SKILL.md"
+    },
+    ".agents/skills/saasaloy-landing-copy/SKILL.md": {
+      "hash": "234ebe1b45c45b6c87451185ca767af7b69c9eda58010f7ffedd6c5e8e6d4e91",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-landing-copy/SKILL.md"
+    },
+    ".agents/skills/saasaloy-setup/SKILL.md": {
+      "hash": "499bd66c9dc6c6e4818d0755b613f829c69bf7390f4f0dac0c016cbd6e9bb02f",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-setup/SKILL.md"
+    },
+    ".agents/skills/saasaloy-testing/SKILL.md": {
+      "hash": "f2c8a2710c752d59c4922bf4995dc360764d422c515347e3661f25fe95f7e365",
+      "module": "base",
+      "from": "_agents/skills/saasaloy-testing/SKILL.md"
+    },
+    ".gitignore": {
+      "hash": "f18dee504a47615e0ad12bf8d751b79a49791955cdc2676bae6d5a336ef11570",
+      "module": "base",
+      "from": "_gitignore"
+    },
+    ".husky/commit-msg": {
+      "hash": "fcfc227fe0e950deadcef148e6b460d3570b2d722ed523786a63ab00e73155c9",
+      "module": "base",
+      "from": "_husky/commit-msg"
+    },
+    ".husky/pre-commit": {
+      "hash": "aad3507759b5b03c40f17cb27ca0e2203edebcd8820c48addadc16104b1e011c",
+      "module": "base",
+      "from": "_husky/pre-commit"
+    },
+    ".prettierignore": {
+      "hash": "31338c4efed0792991cda86c169f26326a076cca9128b837bbe190ac1cb40441",
+      "module": "base",
+      "from": "_prettierignore"
+    },
+    "apps/web/DESIGN.md": {
+      "hash": "22deb4670f195c977925a22c0ad5b819e6961daa7645195f2d3dd8d865b5b1f1",
+      "module": "base",
+      "from": "apps/web/DESIGN.md"
+    },
+    "apps/web/astro.config.mjs": {
+      "hash": "b3e6b827dc6f66a5f511fd07cfd6d8f3dacca3ce08a12486db7f6cc8d4c91d8f",
+      "module": "base",
+      "from": "apps/web/astro.config.mjs"
+    },
+    "apps/web/package.json": {
+      "hash": "1adf1ff783b19780683b9fd67cc9ac7d3d9b226e97c679100f63407f69efb6e0",
+      "module": "base",
+      "from": "apps/web/package.json"
+    },
+    "apps/web/public/favicon.svg": {
+      "hash": "94edf755a6c164ea1fd7ed69647a7a26a6b1bbb09f794519174772c46be6614c",
+      "module": "base",
+      "from": "apps/web/public/favicon.svg"
+    },
+    "apps/web/src/env.ts": {
+      "hash": "591d7dc0285cd8a2326b215137a6d5b5c8600825c7cbc79331769683beeb0b92",
+      "module": "base",
+      "from": "apps/web/src/env.ts"
+    },
+    "apps/web/src/layouts/Layout.astro": {
+      "hash": "34d3892c96e3f0d1400bf57f51c1a211f74865ac92cad89acfc29ffe2235076d",
+      "module": "base",
+      "from": "apps/web/src/layouts/Layout.astro"
+    },
+    "apps/web/src/pages/404.astro": {
+      "hash": "562a7a4c4773fae86021422492e8d33ae8bd0b3505cab7aabf89371c1d73f286",
+      "module": "base",
+      "from": "apps/web/src/pages/404.astro"
+    },
+    "apps/web/src/pages/500.astro": {
+      "hash": "859503a0471916e0259ad9cc83bc48cff05626b09bb7d7499ab5738555680d0b",
+      "module": "base",
+      "from": "apps/web/src/pages/500.astro"
+    },
+    "apps/web/src/pages/index.astro": {
+      "hash": "c9c7d95695969af29b9ef72287b12eead2da55c0d9fcac4fc6a1c57a04989361",
+      "module": "base",
+      "from": "apps/web/src/pages/index.astro"
+    },
+    "apps/web/src/pages/privacy.astro": {
+      "hash": "1074c45c72e089ad26640a93f06e4c4bb86ef6653060abfd978dfbd1e5c08386",
+      "module": "base",
+      "from": "apps/web/src/pages/privacy.astro"
+    },
+    "apps/web/src/pages/terms.astro": {
+      "hash": "6be7ea9a7856a3c9baf91965f53a4bf25756f69040c4d9480bfad8dc9f8f0815",
+      "module": "base",
+      "from": "apps/web/src/pages/terms.astro"
+    },
+    "apps/web/tsconfig.json": {
+      "hash": "d7e29699855d70d404913fc583c0dd38a4f8614de0870d95b400ddad170e5bb1",
+      "module": "base",
+      "from": "apps/web/tsconfig.json"
+    },
+    "apps/web/wrangler.jsonc": {
+      "hash": "879e6d55ee5705f7a0e49a6e30da3e193d9409779f7f858fe1566b5b9707c3c7",
+      "module": "base",
+      "from": "apps/web/wrangler.jsonc"
+    },
+    "commitlint.config.js": {
+      "hash": "bf371430b0ddb1cfe805e04b109c5e05a932f80e9daaf012b2782c7581b51432",
+      "module": "base",
+      "from": "commitlint.config.js"
+    },
+    "docs/runbook-deploy.md": {
+      "hash": "3ee09427898242be9e7c2a4e8f2d83522ae030b55af66c720df16a6cb07fca4f",
+      "module": "base",
+      "from": "docs/runbook-deploy.md"
+    },
+    "lint-staged.config.js": {
+      "hash": "90d95abdbe35605da8ebd85dcc3504bff317b59047811ce95ca901fcae03ba72",
+      "module": "base",
+      "from": "lint-staged.config.js"
+    },
+    "oxlint.config.mjs": {
+      "hash": "94e7ba2a213ce37ad82f4f9581a7e27bd1c8be76f6eea341de90a36c51e5487c",
+      "module": "base",
+      "from": "oxlint.config.mjs"
+    },
+    "package.json": {
+      "hash": "530eb12b4e7d3aa29062c0a9d0a452e1af523ea39fd5e47fa96caffde81e60e8",
+      "module": "base",
+      "from": "package.json"
+    },
+    "packages/config/package.json": {
+      "hash": "00a3bc568c04de84b3ecebab9af85cc6138810b1dfe07f60c1fb8ef43e736eae",
+      "module": "base",
+      "from": "packages/config/package.json"
+    },
+    "packages/config/src/define.test.ts": {
+      "hash": "3a4e3add137f5775fe44408bb26fcb38438a67e924712d821d96afc743a4be88",
+      "module": "base",
+      "from": "packages/config/src/define.test.ts"
+    },
+    "packages/config/src/define.ts": {
+      "hash": "b7ce4245e60392948e5c206d2bd5bd4f16cc8ee08d8c8cdb50fa2af0ed281e60",
+      "module": "base",
+      "from": "packages/config/src/define.ts"
+    },
+    "packages/config/src/index.ts": {
+      "hash": "38da69b5b31068db8f6ec52b49557f038909345e55ad9e43ae02669bfd2aa596",
+      "module": "base",
+      "from": "packages/config/src/index.ts"
+    },
+    "packages/config/src/project.ts": {
+      "hash": "c14b4a464d1d39bcdf658811cdb5b9ab897f5e6310562e413421effdc2e1809c",
+      "module": "base",
+      "from": "packages/config/src/project.ts"
+    },
+    "packages/config/src/sections/app.ts": {
+      "hash": "e0711aa8a735ca8c820265113b82db7a4eb21059aa503c722cee44c5e82fd133",
+      "module": "base",
+      "from": "packages/config/src/sections/app.ts"
+    },
+    "packages/config/src/sections.ts": {
+      "hash": "5610f80351f5ad9e1d00ec93efe5beb225a954da4b08d10c27896b05da4ac7d4",
+      "module": "base",
+      "from": "packages/config/src/sections.ts"
+    },
+    "packages/config/tsconfig.json": {
+      "hash": "8bc997239afe70c47f944a91d1db8bd1701fbd7e856305524d6e48821ed23cee",
+      "module": "base",
+      "from": "packages/config/tsconfig.json"
+    },
+    "packages/env/.env.example": {
+      "hash": "c513c8f33298e6c8138340d8dd5dc7ee0f41b2150882620bd3e68618465be38e",
+      "module": "base",
+      "from": "packages/env/_env.example"
+    },
+    "packages/env/package.json": {
+      "hash": "abdba4fa785ad98f967a0b21fd3dd28d11a350d3c6ca7a04260f307938c7f109",
+      "module": "base",
+      "from": "packages/env/package.json"
+    },
+    "packages/env/scripts/env-setup.ts": {
+      "hash": "d2c50bdd9419fdaec5f2f5f12b610c964bd3f2b68e9631dbdd5bafbd75a5e46f",
+      "module": "base",
+      "from": "packages/env/scripts/env-setup.ts"
+    },
+    "packages/env/src/check.test.ts": {
+      "hash": "e5e91d6951ab5ce06c170df1d2e1283fc34bfbdc4daa98cb41a00c6695eb21d8",
+      "module": "base",
+      "from": "packages/env/src/check.test.ts"
+    },
+    "packages/env/src/check.ts": {
+      "hash": "94552e513540f2021c03ade83ec145dcef831c3d27f1ba0abb30847acdd79f19",
+      "module": "base",
+      "from": "packages/env/src/check.ts"
+    },
+    "packages/env/src/define.test.ts": {
+      "hash": "2800f18b9f7adf3bc4162eea7dfd529d7cce35bd73c8e42230dae150935611da",
+      "module": "base",
+      "from": "packages/env/src/define.test.ts"
+    },
+    "packages/env/src/define.ts": {
+      "hash": "670ec5c3d396b52500c5d390de24e8d816df583fb504fb9e22f61b1b257de66e",
+      "module": "base",
+      "from": "packages/env/src/define.ts"
+    },
+    "packages/env/src/deploy.test.ts": {
+      "hash": "c7924c230beffa9fe979e1c505cfe8b2837ecb7446547ebe17042d0acf965d33",
+      "module": "base",
+      "from": "packages/env/src/deploy.test.ts"
+    },
+    "packages/env/src/deploy.ts": {
+      "hash": "465d85d229f1386676fb57120ca945e73bc00f5179490f0598244bca129eebf9",
+      "module": "base",
+      "from": "packages/env/src/deploy.ts"
+    },
+    "packages/env/src/dotenv.test.ts": {
+      "hash": "432a0466058c16f061f763f3b9d442740344883b5b56c63a97a61f3a77c6658f",
+      "module": "base",
+      "from": "packages/env/src/dotenv.test.ts"
+    },
+    "packages/env/src/dotenv.ts": {
+      "hash": "6624759151f06a75ebf6628bed85cd8f3e0cf1809f43f7ddb98a5db24c40eeb1",
+      "module": "base",
+      "from": "packages/env/src/dotenv.ts"
+    },
+    "packages/env/src/env-file.ts": {
+      "hash": "007ae5d549cfd4c4954e045c92cd035bd3bb042932c4de9b1033245ba0c20ed7",
+      "module": "base",
+      "from": "packages/env/src/env-file.ts"
+    },
+    "packages/env/src/error.ts": {
+      "hash": "8c10f4022afd938b205b7760cffee01fe0e02646a83be73176b14d93b731f6c0",
+      "module": "base",
+      "from": "packages/env/src/error.ts"
+    },
+    "packages/env/src/example.test.ts": {
+      "hash": "5d21c5f7bb7dea0f5e2eaaba79f889f25176b2b28a0b257b390e26800c91e9d6",
+      "module": "base",
+      "from": "packages/env/src/example.test.ts"
+    },
+    "packages/env/src/example.ts": {
+      "hash": "d3dfd121993c83adacf51e4f277aa12834dcdf60c47c87a84e9547e011378d71",
+      "module": "base",
+      "from": "packages/env/src/example.ts"
+    },
+    "packages/env/src/index.ts": {
+      "hash": "3cf440e2203f683f052420fef890970df60a4328332f1c8cc8b11b31b408a8b0",
+      "module": "base",
+      "from": "packages/env/src/index.ts"
+    },
+    "packages/env/src/schema.ts": {
+      "hash": "3f3a4c0ea0e279a4ac142cbf0660b6d9cfcf7cf8ad2a3e38f10eb93017f531f1",
+      "module": "base",
+      "from": "packages/env/src/schema.ts"
+    },
+    "packages/env/src/services.test.ts": {
+      "hash": "aaf404668185a6c8c5bdf345e55cea33b00be908f237ba8679e1869a4a536b82",
+      "module": "base",
+      "from": "packages/env/src/services.test.ts"
+    },
+    "packages/env/src/services.ts": {
+      "hash": "ba09d348c88508511da60e65d2e02424d59c50d9f9407c16697daaacc1b0ae0f",
+      "module": "base",
+      "from": "packages/env/src/services.ts"
+    },
+    "packages/env/src/setup.test.ts": {
+      "hash": "1ec6be72a52a960397d842dff384828af2de2a9bbd546964935c7a62def6348a",
+      "module": "base",
+      "from": "packages/env/src/setup.test.ts"
+    },
+    "packages/env/src/setup.ts": {
+      "hash": "4a9188be7a7ff4a01b2a7f0103a27e4c5c21350e2778b847130ce3354ba5070a",
+      "module": "base",
+      "from": "packages/env/src/setup.ts"
+    },
+    "packages/env/src/source.ts": {
+      "hash": "cf87ea0104b2b24f83ed943f973f23a398c6f71c616a386f97f8b01842ebb067",
+      "module": "base",
+      "from": "packages/env/src/source.ts"
+    },
+    "packages/env/src/sources.test.ts": {
+      "hash": "60ee06c5ed72413e7748d0e6d4c7f1397c272fb6025aa592dd5c87921ae685c6",
+      "module": "base",
+      "from": "packages/env/src/sources.test.ts"
+    },
+    "packages/env/src/sources.ts": {
+      "hash": "42e3ca4a9b3bf1951a2e76c2d94f91149be89e4f46474204ff5b93822ae38bf2",
+      "module": "base",
+      "from": "packages/env/src/sources.ts"
+    },
+    "packages/env/src/zod.ts": {
+      "hash": "b402df766a86258495c80f1a5ee8f7f79e92a920086a14cd578dca4e37800aaf",
+      "module": "base",
+      "from": "packages/env/src/zod.ts"
+    },
+    "packages/env/tsconfig.json": {
+      "hash": "2ebc21ca89dafa0ea609e6d88d29c444a974a91f4a3f138d23f5bdb24a34a62b",
+      "module": "base",
+      "from": "packages/env/tsconfig.json"
+    },
+    "packages/tooling/package.json": {
+      "hash": "d0137208c83d027979a5fbc0fddc82274ceb867a674dbd0284f2e93f38e0ca91",
+      "module": "base",
+      "from": "packages/tooling/package.json"
+    },
+    "packages/tooling/src/deploy-production.test.ts": {
+      "hash": "f4603f5f4b9d09f4ff24e1519f0e276d0d13cd0d12ad26caa204a2722455f69e",
+      "module": "base",
+      "from": "packages/tooling/src/deploy-production.test.ts"
+    },
+    "packages/tooling/src/deploy-production.ts": {
+      "hash": "f9cdb758bd0f9428f55dbe4aa9b5855606d6297162af0353eb1e5fba5475b4a7",
+      "module": "base",
+      "from": "packages/tooling/src/deploy-production.ts"
+    },
+    "packages/tooling/src/deploy.config.ts": {
+      "hash": "85abe1304b7dc4ba84c9169145464954e15248332c694a778ffd21281b4bdd48",
+      "module": "base",
+      "from": "packages/tooling/src/deploy.config.ts"
+    },
+    "packages/tooling/src/link-skills.test.ts": {
+      "hash": "1b33a366a09953f55a1adbd559af6dc368ad5b3e4c8f9cc28dd11ba8994f15f9",
+      "module": "base",
+      "from": "packages/tooling/src/link-skills.test.ts"
+    },
+    "packages/tooling/src/link-skills.ts": {
+      "hash": "551313e948f9e97306641e15d0687666ad4985592cf1229c9631b766232d65ba",
+      "module": "base",
+      "from": "packages/tooling/src/link-skills.ts"
+    },
+    "packages/tooling/src/release.test.ts": {
+      "hash": "46c21e1dfd490167c30ef99c759cb05692bf8b66dc24f28668d3cf1991a43b2b",
+      "module": "base",
+      "from": "packages/tooling/src/release.test.ts"
+    },
+    "packages/tooling/src/release.ts": {
+      "hash": "d595320da81cf37fff34731f14ebf7151ba80ac8e552576a2fef46e4531b4fb5",
+      "module": "base",
+      "from": "packages/tooling/src/release.ts"
+    },
+    "packages/tooling/src/targets.ts": {
+      "hash": "0ede52f69bb50ed9296c0e3a598e62267f7356a7224196aa27af161c12429dfa",
+      "module": "base",
+      "from": "packages/tooling/src/targets.ts"
+    },
+    "packages/tooling/src/types.ts": {
+      "hash": "a53ed6b12b8295a797ce83e80829f64db35833d058473e91ddd12c4c315fb4a3",
+      "module": "base",
+      "from": "packages/tooling/src/types.ts"
+    },
+    "packages/tooling/tsconfig.json": {
+      "hash": "3a82cbaff8e20c50401a4200ee5ebe41e52d6758171ab1ccb63acbfd4f4bd3c9",
+      "module": "base",
+      "from": "packages/tooling/tsconfig.json"
+    },
+    "packages/tsconfig/base.json": {
+      "hash": "c2279a046d128ec880a234e300a9dcc7dfa250ea119007005663040e3645c286",
+      "module": "base",
+      "from": "packages/tsconfig/base.json"
+    },
+    "packages/tsconfig/package.json": {
+      "hash": "147dadcf84dc46cdf9438e2c02621eab1037d2c89cf27ce6e234ad6e3302df59",
+      "module": "base",
+      "from": "packages/tsconfig/package.json"
+    },
+    "packages/ui/AGENTS.md": {
+      "hash": "3165ee48e6ef2fc9fe11e672649b99bab5bd4a2d19bc15b3bd0c129c414ab3fb",
+      "module": "base",
+      "from": "packages/ui/AGENTS.md"
+    },
+    "packages/ui/CLAUDE.md": {
+      "hash": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "module": "base",
+      "from": "packages/ui/CLAUDE.md"
+    },
+    "packages/ui/components.json": {
+      "hash": "5315c228f697ed90995e7e09ca3b03867fa47b178ed4bdd8ab3c93268672a89c",
+      "module": "base",
+      "from": "packages/ui/components.json"
+    },
+    "packages/ui/package.json": {
+      "hash": "e5096cf4551c5974530a85470e8cffaa5c1e10544ed6c5a6ab82da8c1e4d6a60",
+      "module": "base",
+      "from": "packages/ui/package.json"
+    },
+    "packages/ui/src/blocks/audience.tsx": {
+      "hash": "c0bad310cc2fa66aa3f52e989070150b6e7c05c4fc1cb2548052cf4938c90eaa",
+      "module": "base",
+      "from": "packages/ui/src/blocks/audience.tsx"
+    },
+    "packages/ui/src/blocks/cta.tsx": {
+      "hash": "59529499feaccd2901f30ee5ecaddc0b2d6293a918ff9a19fc0a447a179bb46f",
+      "module": "base",
+      "from": "packages/ui/src/blocks/cta.tsx"
+    },
+    "packages/ui/src/blocks/error-state.tsx": {
+      "hash": "aa5f7ab996977845729bfda2b2904f8bac1814b1e032ec366166312d5fdd8025",
+      "module": "base",
+      "from": "packages/ui/src/blocks/error-state.tsx"
+    },
+    "packages/ui/src/blocks/faq.tsx": {
+      "hash": "c727b17a7e33c571ec0fafbee0f098cb2ad3b85382f5edfdb496c07e85b3f964",
+      "module": "base",
+      "from": "packages/ui/src/blocks/faq.tsx"
+    },
+    "packages/ui/src/blocks/feature-grid.tsx": {
+      "hash": "5cb87c46ab262bb0b9235e821d8fd60c851b561e6525382f9c3f19d9af8b67dc",
+      "module": "base",
+      "from": "packages/ui/src/blocks/feature-grid.tsx"
+    },
+    "packages/ui/src/blocks/footer.tsx": {
+      "hash": "7e1f8e744ec847b671cbe2206ccc6dac445a97aa454f7e72e15ee97cc70c914f",
+      "module": "base",
+      "from": "packages/ui/src/blocks/footer.tsx"
+    },
+    "packages/ui/src/blocks/hero.tsx": {
+      "hash": "6c0ea9323510e013eb2af3b3a7c0f67d6ac13241d1f0ad5a5fda9c53a0f4a8af",
+      "module": "base",
+      "from": "packages/ui/src/blocks/hero.tsx"
+    },
+    "packages/ui/src/blocks/how-it-works.tsx": {
+      "hash": "f8f826e593b1e2a6994c00bde49052a71b92a66c59b48ba877625fe16f146b5b",
+      "module": "base",
+      "from": "packages/ui/src/blocks/how-it-works.tsx"
+    },
+    "packages/ui/src/blocks/logo-cloud.tsx": {
+      "hash": "2ebda1cf191127266a55c002e77deb6d60ea8cef16d0e1f2d2a8b031b756d6a6",
+      "module": "base",
+      "from": "packages/ui/src/blocks/logo-cloud.tsx"
+    },
+    "packages/ui/src/blocks/navbar.tsx": {
+      "hash": "9d2c74f3d446fb17a53aa354a63a233e8ca3fcf4a15e7d0816c3e94aef29d298",
+      "module": "base",
+      "from": "packages/ui/src/blocks/navbar.tsx"
+    },
+    "packages/ui/src/blocks/pain-points.tsx": {
+      "hash": "9866fc8b9c54b74db1d9b84432fde4ed64c9ee0fb36869d8d510c6571bad0651",
+      "module": "base",
+      "from": "packages/ui/src/blocks/pain-points.tsx"
+    },
+    "packages/ui/src/blocks/pricing-table.tsx": {
+      "hash": "0e4fe0606d2148036bc0870724919ea2d7029ad8baedce05ae5dc1feeb00fdd8",
+      "module": "base",
+      "from": "packages/ui/src/blocks/pricing-table.tsx"
+    },
+    "packages/ui/src/blocks/showcase.tsx": {
+      "hash": "cc1b917bbe034ff54919c232d233af8daa8cfef6c195f708266f7cd7ff623bcb",
+      "module": "base",
+      "from": "packages/ui/src/blocks/showcase.tsx"
+    },
+    "packages/ui/src/blocks/testimonials.tsx": {
+      "hash": "088997321361ec750f39eac94c6ca961b89321f32da9ed6e87ea63edb56db694",
+      "module": "base",
+      "from": "packages/ui/src/blocks/testimonials.tsx"
+    },
+    "packages/ui/src/blocks/theme-toggle.tsx": {
+      "hash": "4d45a3d3b606f47935ad165de6e5b4b76ad8960e69fca54769faf7d4bd43d120",
+      "module": "base",
+      "from": "packages/ui/src/blocks/theme-toggle.tsx"
+    },
+    "packages/ui/src/components/accordion.tsx": {
+      "hash": "492336e5038f9d42c45b0719b625f70db18e3eef7ad3f213173018dd251ca695",
+      "module": "base",
+      "from": "packages/ui/src/components/accordion.tsx"
+    },
+    "packages/ui/src/components/avatar.tsx": {
+      "hash": "59e6291b0abaf05fe9eb430ad27a8d808620eaf2f4189e49a43f8752678109bb",
+      "module": "base",
+      "from": "packages/ui/src/components/avatar.tsx"
+    },
+    "packages/ui/src/components/badge.tsx": {
+      "hash": "1adc45260153cb91745502cf22d10b54596ffdeb92f3e5547dd15e2b2d97c1ae",
+      "module": "base",
+      "from": "packages/ui/src/components/badge.tsx"
+    },
+    "packages/ui/src/components/button.tsx": {
+      "hash": "bfe391ddbc437b4be69249e1303dda8d071d1090af51793647a6d04737a496b3",
+      "module": "base",
+      "from": "packages/ui/src/components/button.tsx"
+    },
+    "packages/ui/src/components/card.tsx": {
+      "hash": "080bfb834a0f2cdaab85629461d4283bc9f3ce743c9feeb0b31f672d85c557f0",
+      "module": "base",
+      "from": "packages/ui/src/components/card.tsx"
+    },
+    "packages/ui/src/components/collapsible.tsx": {
+      "hash": "21a3f4661731797a1c7b9d9e508d78e6f73b8bbd6ec9b2e49e18d31f65dfe4c5",
+      "module": "base",
+      "from": "packages/ui/src/components/collapsible.tsx"
+    },
+    "packages/ui/src/components/dropdown-menu.tsx": {
+      "hash": "e56e6515a2a89bb9a3c17c2490306c80bfdc7bb49257caff1e573ca2e2160db6",
+      "module": "base",
+      "from": "packages/ui/src/components/dropdown-menu.tsx"
+    },
+    "packages/ui/src/components/input.tsx": {
+      "hash": "7f06191992452c2cb9c292484f38e2cc90ed62def96181ad788fca2bfdd3d3c0",
+      "module": "base",
+      "from": "packages/ui/src/components/input.tsx"
+    },
+    "packages/ui/src/components/label.tsx": {
+      "hash": "b2f3437e1ea370f24e3300f8a17b03365d587f6f4c49b450c3e5c53a42094f1d",
+      "module": "base",
+      "from": "packages/ui/src/components/label.tsx"
+    },
+    "packages/ui/src/components/scroll-area.tsx": {
+      "hash": "f6aa52def1b6e0babb3b920de235e15a7b07dc23a05be44f7815ac5c4f432e3e",
+      "module": "base",
+      "from": "packages/ui/src/components/scroll-area.tsx"
+    },
+    "packages/ui/src/components/separator.tsx": {
+      "hash": "ac2c51d9a530199c667fe80bd7ab88b85d64f3dcbe6862137f33d8d297847abd",
+      "module": "base",
+      "from": "packages/ui/src/components/separator.tsx"
+    },
+    "packages/ui/src/components/sheet.tsx": {
+      "hash": "c373bdb976a3b6d1a9d3c5631d68585bfb3770c4ccdf0759b7d87b2ecad172c7",
+      "module": "base",
+      "from": "packages/ui/src/components/sheet.tsx"
+    },
+    "packages/ui/src/components/table.tsx": {
+      "hash": "2a6c1c7773251b657fd831ea608d4b6208a104b013ef0cbc32d64c99c1738afe",
+      "module": "base",
+      "from": "packages/ui/src/components/table.tsx"
+    },
+    "packages/ui/src/components/tabs.tsx": {
+      "hash": "ab3c89ecabe80669c21537e72a75248bd14b13d1b29acf500408766959c31efb",
+      "module": "base",
+      "from": "packages/ui/src/components/tabs.tsx"
+    },
+    "packages/ui/src/components/tooltip.tsx": {
+      "hash": "970e985ea6cf10e8a45c837a968bf1c08fa34e015ef8d1cf162fa20af60a4cdd",
+      "module": "base",
+      "from": "packages/ui/src/components/tooltip.tsx"
+    },
+    "packages/ui/src/containers/README.md": {
+      "hash": "d8ad2ad8a77268cf826c19b82cfa56d71d8fb8bdfe2145f66655093bc2548da2",
+      "module": "base",
+      "from": "packages/ui/src/containers/README.md"
+    },
+    "packages/ui/src/content/errors.ts": {
+      "hash": "d1432149764717eea98964b15433eff2332c8a3d4458726de4e65fec8323a903",
+      "module": "base",
+      "from": "packages/ui/src/content/errors.ts"
+    },
+    "packages/ui/src/content/landing.ts": {
+      "hash": "4a70130719c602c95bac0fe66dcf9f9493ce87d670dc3ed9c18bcc6dda2502d9",
+      "module": "base",
+      "from": "packages/ui/src/content/landing.ts"
+    },
+    "packages/ui/src/index.ts": {
+      "hash": "0872641a6d7bbd2a9284708cab37786a6eaa6354809ed953320b2c8d66c62708",
+      "module": "base",
+      "from": "packages/ui/src/index.ts"
+    },
+    "packages/ui/src/lib/external-link.ts": {
+      "hash": "f7b04e5deb2d054ef4ccabf02b2b6650048fab9f027833788e7322f86284c0b0",
+      "module": "base",
+      "from": "packages/ui/src/lib/external-link.ts"
+    },
+    "packages/ui/src/lib/icons.ts": {
+      "hash": "276bc495e697029fcfffebd58032ad249195b6d1d3d451b6ba519a5df92732fd",
+      "module": "base",
+      "from": "packages/ui/src/lib/icons.ts"
+    },
+    "packages/ui/src/lib/inline-code.ts": {
+      "hash": "5220bbc8da8deb3f63ea9b4df62264d8d7a247e0ffde43c38aae7cd5ae4d2f01",
+      "module": "base",
+      "from": "packages/ui/src/lib/inline-code.ts"
+    },
+    "packages/ui/src/lib/interpolate.ts": {
+      "hash": "754035849e3de94fdc7b3cf7c63181c4e51cc4005864a975580a5db226c1c7a3",
+      "module": "base",
+      "from": "packages/ui/src/lib/interpolate.ts"
+    },
+    "packages/ui/src/lib/sentinel.ts": {
+      "hash": "6e781df5db6f5344e054adcfe7be036c0d5418db38769484bd353e8855bcafa1",
+      "module": "base",
+      "from": "packages/ui/src/lib/sentinel.ts"
+    },
+    "packages/ui/src/lib/theme.ts": {
+      "hash": "98960c49d229d956461e4e8596f80b08a5fda2222cbafd32bd1cc6d656f7bc76",
+      "module": "base",
+      "from": "packages/ui/src/lib/theme.ts"
+    },
+    "packages/ui/src/lib/utils.ts": {
+      "hash": "79ed6cccab5e409803db350cec9c95dfdc6d31460037569b50c6c07ec84e88a4",
+      "module": "base",
+      "from": "packages/ui/src/lib/utils.ts"
+    },
+    "packages/ui/src/styles/brand.css": {
+      "hash": "d7c3ad027b63deffce8f897db03f31bd1a31bbc93d494c694ab24062a37da2be",
+      "module": "base",
+      "from": "packages/ui/src/styles/brand.css"
+    },
+    "packages/ui/src/styles/globals.css": {
+      "hash": "392e2922fbe4a987d4ad519a6a6254a44b6677e1935fbd5f8b7a26ce128dec6f",
+      "module": "base",
+      "from": "packages/ui/src/styles/globals.css"
+    },
+    "packages/ui/src/styles/web.css": {
+      "hash": "208a44a0594c101ca40501688c5c213e6f7242d02e3067cd97beed86ec2ce103",
+      "module": "base",
+      "from": "packages/ui/src/styles/web.css"
+    },
+    "packages/ui/tsconfig.json": {
+      "hash": "f0e227b92d1acbc11844baa4e816002afa5cbf4cbb668378e73d5fe3a013f061",
+      "module": "base",
+      "from": "packages/ui/tsconfig.json"
+    },
+    "pnpm-workspace.yaml": {
+      "hash": "2c514bc2a49434d7b41043afca7b096780d77b9f20725b791750f8d77286027f",
+      "module": "base",
+      "from": "pnpm-workspace.yaml"
+    },
+    "prettier.config.js": {
+      "hash": "fed184d769d45f03f6fdbd8e7d67c1efcefe4cdf866d144172f299a390f1330c",
+      "module": "base",
+      "from": "prettier.config.js"
+    },
+    "saasaloy.json": {
+      "hash": "783f97628a3737227ae48003ec541578385b5f4058dcc803d24462aec514dab8",
+      "module": "base",
+      "from": "saasaloy.json"
+    },
+    "stylelint.config.js": {
+      "hash": "fc2c0f2e320af20322ee48e520a06e4661b67c8d13c936c6843a8ef901ceceae",
+      "module": "base",
+      "from": "stylelint.config.js"
+    },
+    "turbo.json": {
+      "hash": "9c2a6df70a802c9072050895049f5a88e56b7f2f326e40efcaa995b02166b536",
+      "module": "base",
+      "from": "turbo.json"
+    },
+    "vitest.config.ts": {
+      "hash": "0f00c89fae027a3e123682daf6eb9760545c3538f758bbf4e912b4b9976edeec",
+      "module": "base",
+      "from": "vitest.config.ts"
+    }
+  },
+  "patches": [],
+  "removeWarnings": {}
+}

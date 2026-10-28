@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    // `packages/env` is consumed as source like every other workspace here, and its own
+    // relative imports carry a `.ts`: `pnpm env:setup`, `env-exec` and its tests all run
+    // under plain Node, which resolves the real filename rather than a bundler's guess.
+    // A consumer compiling that source has to accept the syntax, so the flag is set once
+    // here. It permits the extension; it never requires one, and `noEmit` above is what
+    // makes it legal.
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx"
+  }
+}

@@ -1,0 +1,25 @@
+---
+// This file's name is the route. `config.app.legal.privacyPath` is what the footer links, so rename
+// this page and that value in the same edit, or the link 404s.
+import { siteName } from "@repo/ui";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title={`Privacy Policy — ${siteName}`}>
+  <main
+    id="main"
+    tabindex="-1"
+    class="mx-auto my-16 max-w-2xl px-6 leading-[1.6]"
+  >
+    <h1 class="mb-6 text-3xl font-bold tracking-tight">Privacy Policy</h1>
+    <p class="mb-4">
+      Placeholder privacy policy for {siteName}. Replace with your own before
+      launch.
+    </p>
+    <p>
+      <a href="/" class="hover:underline">
+        ← Home
+      </a>
+    </p>
+  </main>
+</Layout>

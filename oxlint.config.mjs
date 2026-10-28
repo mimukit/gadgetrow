@@ -1,0 +1,308 @@
+import { defineConfig } from "oxlint";
+import astro from "ultracite/oxlint/astro";
+import core from "ultracite/oxlint/core";
+import react from "ultracite/oxlint/react";
+import vitest from "ultracite/oxlint/vitest";
+
+// Run it as `oxlint -c oxlint.config.mjs` — the flag is not optional. oxlint only
+// auto-discovers `.oxlintrc.json`, and a JSON config cannot `extends` Ultracite's
+// presets: `extends` takes file paths, JSON only, while the presets are `.mjs`
+// modules. The JS config format is experimental and needs Node.js, which this
+// project already requires (>= 24).
+//
+// Add `ultracite/oxlint/tanstack` when an admin SPA lands. `vitest` is on because the
+// root `vitest.config.ts` runs every workspace's tests. The full preset list is
+// angular, astro, core, jest, js-plugins, nestjs, next, qwik, react, remix, solid,
+// svelte, tanstack, vitest, vue.
+
+// DO NOT replace this with object spread. `{ ...core, ...react }` overwrites
+// `plugins` with react's three entries and silently drops core's eight
+// (eslint, typescript, unicorn, oxc, import, jsdoc, node, promise). The config
+// still loads and still reports *some* violations, so it looks like it works.
+// Arrays are unioned; `env` and `rules` are merged key-by-key, later preset wins.
+function mergePresets(...presets) {
+  const merged = {
+    env: {},
+    ignorePatterns: [],
+    overrides: [],
+    plugins: [],
+    rules: {},
+  };
+  for (const preset of presets) {
+    Object.assign(merged.env, preset.env);
+    Object.assign(merged.rules, preset.rules);
+    merged.ignorePatterns.push(...(preset.ignorePatterns ?? []));
+    merged.overrides.push(...(preset.overrides ?? []));
+    merged.plugins.push(...(preset.plugins ?? []));
+  }
+  merged.ignorePatterns = [...new Set(merged.ignorePatterns)];
+  merged.plugins = [...new Set(merged.plugins)];
+  return merged;
+}
+
+const ultracite = mergePresets(core, astro, react, vitest);
+
+// Every rule the vitest preset turns on, mapped to "off". The preset's file glob is
+// `**/*.{test,spec,…}`, which also matches the Playwright specs `saasaloy add e2e` puts in
+// `packages/e2e/specs/`. Those files call a `test` and an `expect` from `@playwright/test`,
+// so a vitest rule reading them reports on an API that is not there. Derived from the
+// preset rather than listed by hand, so a preset bump cannot reopen the gap. The override
+// that uses it is last, and oxlint lets the last override win.
+const vitestRulesOff = Object.fromEntries(
+  (vitest.overrides ?? []).flatMap((override) =>
+    Object.keys(override.rules ?? {}).map((rule) => [rule, "off"])
+  )
+);
+
+// Rules turned off for the whole project, each with its reason. Ultracite enables
+// ~470, including whole families oxlint itself files under `style`, `pedantic` and
+// `restriction`. These are the ones that disagree with how the code Saasaloy ships
+// you is written — the base template AND every module `saasaloy add` drops in, which
+// is why the list is wider than the base alone needs. Turning one back on is fine;
+// expect to fix the module files it lands on.
+//
+// This is your config now. Keep the reasons if you edit it — a rule turned off
+// without one comes back as an argument later.
+const suppressed = {
+  // --- Declaration shape ---------------------------------------------------
+  // Ultracite prefers `const Foo = () => {}`. The vendored shadcn primitives and
+  // every block here use `function` declarations, which is also what shadcn's own
+  // registry emits — so turning these on means diverging from upstream on the next
+  // `shadcn add`. Module files put helpers below their callers for the same reason,
+  // which is the only thing `no-use-before-define` is reacting to.
+  "func-style": "off",
+  "no-use-before-define": "off",
+  "react/function-component-definition": "off",
+
+  // --- Comment placement ---------------------------------------------------
+  // Trailing explanatory comments are the house style in everything Saasaloy ships.
+  "no-inline-comments": "off",
+
+  // --- Async shape ---------------------------------------------------------
+  // Sequential awaits are deliberate where ordering matters, and `async` is kept on
+  // some functions (e.g. an email provider's `send`) to satisfy an interface even
+  // when that implementation has nothing to await.
+  //
+  // The two `prefer-await-to-*` rules fire on APIs that are callbacks by contract:
+  // Hono's `.onError((err, c) => …)` in `apps/api`, and the `.catch()` that
+  // `database-postgres`'s `withDb` hangs on a promise it hands to `waitUntil` rather
+  // than awaiting. Neither has an `await` form.
+  "no-await-in-loop": "off",
+  "promise/prefer-await-to-callbacks": "off",
+  "promise/prefer-await-to-then": "off",
+  "require-await": "off",
+
+  // --- Regular expressions -------------------------------------------------
+  // Adding `u` changes escape semantics and named capture groups mean rewriting
+  // every index-based match access. Both are mechanical-looking edits with real
+  // behaviour risk, and the email module's HTML escaping is full of them.
+  "prefer-named-capture-group": "off",
+  "require-unicode-regexp": "off",
+
+  // --- Key ordering and small style ----------------------------------------
+  // Props and config objects are grouped by meaning (`id`, then `title`, then the
+  // data). Alphabetising them loses that ordering for no benefit. `no-plusplus` and
+  // `method-signature-style` are pure preference. `unicorn/import-style` wants a
+  // default import for `node:path` and friends, against the named imports
+  // (`import { resolve } from "node:path"`) every module file uses.
+  "no-plusplus": "off",
+  "sort-keys": "off",
+  "typescript/method-signature-style": "off",
+  "unicorn/import-style": "off",
+
+  // --- Thresholds and placement --------------------------------------------
+  // Numeric limits and shape preferences with no defect behind them. `complexity`
+  // fires on a provider's error mapper, which is one flat branch per vendor code.
+  // `no-nested-ternary` fires on a three-way sort icon in JSX. `no-dynamic-delete`
+  // fires on dropping one key from a record keyed by a runtime id, which is what a
+  // permission draft is. `consistent-function-scoping` wants a helper hoisted out of
+  // the factory it serves, away from the one caller that reads it.
+  complexity: "off",
+  "no-nested-ternary": "off",
+  "typescript/no-dynamic-delete": "off",
+  "unicorn/consistent-function-scoping": "off",
+
+  // --- Accessibility shape, not accessibility ------------------------------
+  // Fires on `<div role="group">` and friends: the roles are correct, and swapping
+  // in `<fieldset>`/`<output>` changes the markup's layout defaults. That is a
+  // design decision, not a lint fix.
+  "jsx-a11y/prefer-tag-over-role": "off",
+};
+
+export default defineConfig({
+  ...ultracite,
+
+  rules: {
+    ...ultracite.rules,
+    ...suppressed,
+    // Ultracite ships `no-console: "off"`. Turn it on: a stray `console.log` in a
+    // deployed Worker or a client bundle is a leak, not a log line. Add an override
+    // below for any file where console output is genuinely the feature.
+    "no-console": "error",
+    // A type-only import is erased before the code runs, so a cycle that closes only
+    // through one cannot leave a module half-initialised. The runtime cycles stay errors.
+    "import/no-cycle": ["error", { ignoreTypes: true }],
+  },
+
+  overrides: [
+    ...ultracite.overrides,
+
+    // Ultracite's core preset sets `env: { browser: true }` and nothing else, so
+    // Node globals have to be added where they apply.
+    {
+      files: ["*.config.{js,mjs,ts}", "apps/*/*.config.{js,mjs,ts}"],
+      env: { node: true },
+    },
+
+    // oxlint parses `.astro` natively — no parser wiring, no plugin chain. Both the
+    // `---` frontmatter and client `<script>` blocks are linted.
+    //
+    // KEEP `.astro` OUT OF THE TYPE-AWARE PASS (`pnpm lint:types`). `apps/web/tsconfig.json`
+    // includes the build-generated `.astro/types.d.ts`, so type-aware linting here
+    // would require `astro sync` before every `pnpm lint`, including on a fresh
+    // clone. That is why `lint:types` is scoped to `packages/ui/src` and the plain
+    // `lint:code` pass covers everything else. Do not merge the two.
+    {
+      files: ["**/*.astro"],
+      env: { astro: true, browser: true },
+    },
+
+    // React and Astro components are PascalCase by convention; unicorn wants
+    // kebab-case for every filename.
+    {
+      files: ["**/*.astro", "**/*.tsx"],
+      rules: { "unicorn/filename-case": "off" },
+    },
+
+    // The signed-in apps share one primitive set in packages/ui/src/components/shell/,
+    // which `saasaloy add shell` writes (`admin` and `app` install it). Its names repeat
+    // the base ones (`button`, `card`), so an editor's autocomplete offers both and the
+    // wrong one renders with no error, in the web app's styling. Inside those apps and the
+    // shell, admin and auth folders of @repo/ui, a base primitive or a base block with a
+    // shell twin is a lint error. A project without a signed-in app has no file under
+    // these globs, so the rule never fires there.
+    {
+      files: [
+        "apps/admin/**",
+        "apps/app/**",
+        "packages/ui/src/blocks/admin/**",
+        "packages/ui/src/blocks/auth/**",
+        "packages/ui/src/blocks/shell/**",
+        "packages/ui/src/components/shell/**",
+        "packages/ui/src/containers/shell/**",
+      ],
+      rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            patterns: [
+              {
+                group: [
+                  "@repo/ui/components/*",
+                  "!@repo/ui/components/shell/*",
+                  "@repo/ui/blocks/error-state",
+                  "@repo/ui/blocks/theme-toggle",
+                ],
+                message:
+                  "Signed-in app code uses the shell set: import from @repo/ui/components/shell/* and @repo/ui/blocks/shell/*.",
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // The design system is vendored from shadcn and re-synced with
+    // `pnpm --filter @repo/ui exec shadcn add …`. `Label` is a primitive: the control
+    // it labels is supplied by the call site, which this rule cannot see.
+    {
+      files: ["packages/ui/src/components/**"],
+      rules: { "jsx-a11y/label-has-associated-control": "off" },
+    },
+
+    // Console output is the whole implementation of a console-backed provider —
+    // `saasaloy add email-console` lands one at `packages/email/src/providers/console.ts`.
+    // Everything else that wants to log should go through a real logger.
+    {
+      files: ["packages/*/src/providers/console.ts", "packages/logger*/**"],
+      rules: { "no-console": "off" },
+    },
+
+    // Two more places where `console` is the right call, both from the queue module.
+    // A queue provider's batch consumer and cron tick run outside a request, so there is
+    // no `c.get("log")` to reach for, and `@repo/queue` has no runtime dependencies to
+    // import `@repo/logger` with. Workers Logs indexes `console` directly. The example
+    // job's whole body is one log line, which is what makes it a readable example.
+    {
+      files: [
+        "packages/queue/src/providers/**",
+        "packages/queue/src/jobs/example.ts",
+      ],
+      rules: { "no-console": "off" },
+    },
+
+    // The queue barrel registers its providers, and each provider calls back into the
+    // barrel for `createQueue`, `dispatch` and `dueSchedules`. The cycle is deliberate:
+    // a provider reads those hoisted functions inside a function body, never while the
+    // module loads. `packages/queue/src/providers/memory.ts` explains it in full.
+    {
+      files: ["packages/queue/src/index.ts", "packages/queue/src/providers/**"],
+      rules: { "import/no-cycle": "off" },
+    },
+
+    // `packages/env` runs on `node:test`, not vitest. Its tests predate the base's Vitest
+    // setup, and the root `vitest.config.ts` leaves the package out. Three
+    // vitest rules point these files at a runner they cannot use, and
+    // `no-floating-promises` fires on every `describe`, whose promise the runner itself
+    // awaits. Prefixing twenty call sites with `void` would say nothing the runner does
+    // not already guarantee.
+    //
+    // `env:setup` and `env-deploy` are node scripts, so `process` and `console` are theirs
+    // to use. Nothing a Worker imports reaches them (ADR 0041).
+    {
+      files: ["packages/env/**/*.test.ts"],
+      plugins: ["vitest"],
+      rules: {
+        "typescript/no-floating-promises": "off",
+        "vitest/no-import-node-test": "off",
+        "vitest/prefer-importing-vitest-globals": "off",
+        "vitest/prefer-each": "off",
+      },
+    },
+    // `createEnv` is a generic mapped-type API: it takes `server`, `client` and `shared`
+    // as distinct type parameters, erases them to one `SchemaRecord` to iterate the keys,
+    // and puts the specific type back on the way out. Every assertion this file makes is
+    // that erase-and-restore, which the type system cannot express and the rules below
+    // cannot see through. The Proxy adds two more — `Reflect.get` on a mapped type is
+    // `any` by definition. Scoped to this one file; every rule stays on everywhere else.
+    {
+      files: ["packages/env/src/define.ts", "packages/env/src/define.test.ts"],
+      rules: {
+        "typescript/no-unsafe-type-assertion": "off",
+        "typescript/no-unnecessary-type-assertion": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-return": "off",
+      },
+    },
+    {
+      files: ["packages/env/scripts/**", "packages/env/src/deploy.ts"],
+      rules: { "no-console": "off", "unicorn/no-process-exit": "off" },
+    },
+    // The Playwright workspace `saasaloy add e2e` writes. Keep this override last; see
+    // `vitestRulesOff` above. `prepare.ts` and `global-teardown.ts` are node scripts that
+    // report to stdout, the only place a headless run can say anything, and exit with a
+    // status the `e2e` script reads.
+    {
+      files: ["packages/e2e/**"],
+      env: { node: true },
+      // `plugins` is not optional here. oxlint only honours a rule turned off in an
+      // override when that override also names the rule's plugin.
+      plugins: ["vitest"],
+      rules: {
+        ...vitestRulesOff,
+        "no-console": "off",
+        "unicorn/no-process-exit": "off",
+      },
+    },
+  ],
+});
